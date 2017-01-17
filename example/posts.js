@@ -9,6 +9,7 @@ import {
     DisabledInput,
     Edit,
     EditButton,
+    FileField,
     FileInput,
     Filter,
     FormTab,
@@ -60,7 +61,7 @@ export const PostCreate = Translate(({ translate, ...props }) => (
     <Create {...props}>
         <SimpleForm defaultValue={{ average_note: 0 }} validation={(values) => {
             const errors = {};
-            ['title', 'teaser'].forEach(field => {
+            ['title', 'teaser'].forEach((field) => {
                 if (!values[field]) {
                     errors[field] = ['Required field'];
                 }
@@ -91,6 +92,13 @@ export const PostEdit = Translate(({ translate, ...props }) => (
                 <TextInput source="title" label={translate('post.form.title')} validation={{ required: true }} />
                 <LongTextInput source="teaser" label={translate('post.form.teaser')} validation={{ required: true }} />
                 <FileInput
+                    previewComponent={file => (
+                        <FileField
+                            key={file.src}
+                            url={file.src}
+                            title={file.title}
+                        />
+                    )}
                     source="picture"
                     label="Preview Picture"
                     accept="image/*"

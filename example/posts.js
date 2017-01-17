@@ -9,19 +9,19 @@ import {
     DisabledInput,
     Edit,
     EditButton,
-    ImageField,
-    ImageInput,
     Filter,
     FormTab,
+    ImageField,
+    ImageInput,
     List,
     LongTextInput,
     NumberField,
     NumberInput,
-    SimpleForm,
-    Show,
-    ShowButton,
     ReferenceManyField,
     RichTextField,
+    Show,
+    ShowButton,
+    SimpleForm,
     SimpleShowLayout,
     TabbedForm,
     TextField,
@@ -92,19 +92,9 @@ export const PostEdit = Translate(({ translate, ...props }) => (
                 <DisabledInput label="Id" source="id" />
                 <TextInput source="title" label={translate('post.form.title')} validation={{ required: true }} />
                 <LongTextInput source="teaser" label={translate('post.form.teaser')} validation={{ required: true }} />
-                <ImageInput
-                    previewComponent={(file, index) => (
-                        <ImageField
-                            source={`pictures[${index}]`}
-                            src="src"
-                            title="title"
-                        />
-                    )}
-                    multiple
-                    source="pictures"
-                    label="Related pictures"
-                    accept="image/*"
-                />
+                <ImageInput multiple source="pictures" label="Related pictures" accept="image/*">
+                    <ImageField source="src" title="title" />
+                </ImageInput>
             </FormTab>
             <FormTab label={translate('post.form.body')}>
                 <RichTextInput source="body" label={translate('post.form.body')} validation={{ required: true }} addLabel={false} />

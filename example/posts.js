@@ -9,8 +9,8 @@ import {
     DisabledInput,
     Edit,
     EditButton,
-    FileField,
-    FileInput,
+    ImageField,
+    ImageInput,
     Filter,
     FormTab,
     List,
@@ -43,7 +43,7 @@ export const PostList = Translate(({ translate, ...props }) => (
     <List {...props} filters={<PostFilter />} sort={{ field: 'published_at', order: 'DESC' }}>
         <Datagrid>
             <TextField source="id" />
-            <FileField source="pictures[0]" src="src" title="title" />
+            <ImageField source="pictures[0]" src="src" title="title" />
             <TextField source="title" label={translate('post.list.title')} style={titleFieldStyle} />
             <DateField source="published_at" label={translate('post.list.published_at')} style={{ fontStyle: 'italic' }} />
             <BooleanField label={translate('post.list.commentable')} source="commentable" />
@@ -92,9 +92,9 @@ export const PostEdit = Translate(({ translate, ...props }) => (
                 <DisabledInput label="Id" source="id" />
                 <TextInput source="title" label={translate('post.form.title')} validation={{ required: true }} />
                 <LongTextInput source="teaser" label={translate('post.form.teaser')} validation={{ required: true }} />
-                <FileInput
+                <ImageInput
                     previewComponent={(file, index) => (
-                        <FileField
+                        <ImageField
                             source={`pictures[${index}]`}
                             src="src"
                             title="title"

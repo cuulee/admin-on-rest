@@ -23,7 +23,9 @@ describe('<SimpleForm />', () => {
                 <TextInput source="name" />
             </SimpleForm>
         );
-        const button = wrapper.find('Connect(SaveButton)');
+
+        console.log(wrapper.debug());
+        const button = wrapper.find('Connect(TranslatedSaveButton)');
         assert.equal(button.length, 1);
     });
 });

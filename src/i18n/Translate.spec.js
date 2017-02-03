@@ -36,4 +36,12 @@ describe('<Translate />', () => {
 
         assert(wrapper.prop('className'), 'awesome');
     });
+
+    it('should keep defaultProps of original component', () => {
+        const Component = () => (<div />);
+        Component.defaultProps = { foo: 'bar' };
+
+        const TranslatedComponent = translate(Component);
+        assert.deepEqual(TranslatedComponent.defaultProps, { foo: 'bar' });
+    });
 });

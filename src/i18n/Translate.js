@@ -14,7 +14,8 @@ const translate = (BaseComponent) => {
         locale: PropTypes.string.isRequired,
     };
 
-    TranslatedComponent.displayName = BaseComponent.name;
+    TranslatedComponent.displayName = `Translated${BaseComponent.name}`;
+    TranslatedComponent.defaultProps = BaseComponent.defaultProps;
 
     return TranslatedComponent;
 };
